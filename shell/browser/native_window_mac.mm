@@ -466,8 +466,11 @@ void NativeWindowMac::SetContentView(views::View* view) {
 }
 
 void NativeWindowMac::Close() {
+  LOG(INFO) << "IN NativeWindowMac::Close";
   if (!IsClosable()) {
+    LOG(INFO) << "IN NativeWindowMac::Close, !IsClosable()";
     WindowList::WindowCloseCancelled(this);
+    LOG(INFO) << "IN NativeWindowMac::Close, !IsClosable()2";
     return;
   }
 
@@ -475,15 +478,19 @@ void NativeWindowMac::Close() {
   // [window_ performClose:nil], the window won't close properly
   // even after the user has ended the sheet.
   // Ensure it's closed before calling [window_ performClose:nil].
+  LOG(INFO) << "IN NativeWindowMac::Close2";
   SetEnabled(true);
-
+  LOG(INFO) << "IN NativeWindowMac::Close3";
   [window_ performClose:nil];
-
+  LOG(INFO) << "IN NativeWindowMac::Close4";
   // Closing a sheet doesn't trigger windowShouldClose,
   // so we need to manually call it ourselves here.
   if (is_modal() && parent() && IsVisible()) {
+    LOG(INFO) << "IN NativeWindowMac::Close5";
     NotifyWindowCloseButtonClicked();
+    LOG(INFO) << "IN NativeWindowMac::Close6";
   }
+  LOG(INFO) << "IN NativeWindowMac::Close7";
 }
 
 void NativeWindowMac::CloseImmediately() {
