@@ -4151,7 +4151,6 @@ describe('BrowserWindow module', () => {
 
     ifdescribe(process.platform === 'darwin')('fullscreen state', () => {
       it('should not cause a crash if called when exiting fullscreen', async () => {
-        console.log('ABOUT TO TEST CRASHES');
         const w = new BrowserWindow();
 
         const enterFullScreen = emittedOnce(w, 'enter-full-screen');
