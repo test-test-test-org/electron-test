@@ -485,6 +485,18 @@ void NativeWindowMac::Close() {
   LOG(INFO) << "IN NativeWindowMac::Close4";
   // Closing a sheet doesn't trigger windowShouldClose,
   // so we need to manually call it ourselves here.
+  if (is_modal()) {
+    LOG(INFO) << "IN NativeWindowMac::Close4a is_modal() is true";
+  }
+  LOG(INFO) << "IN NativeWindowMac::Close4a is_modal() worked";
+  if (parent()) {
+    LOG(INFO) << "IN NativeWindowMac::Close4b parent() is true";
+  }
+  LOG(INFO) << "IN NativeWindowMac::Close4b parent() worked";
+  if (IsVisible()) {
+    LOG(INFO) << "IN NativeWindowMac::Close4c IsVisible() is true";
+  }
+  LOG(INFO) << "IN NativeWindowMac::Close4c IsVisible() worked";
   if (is_modal() && parent() && IsVisible()) {
     LOG(INFO) << "IN NativeWindowMac::Close5";
     NotifyWindowCloseButtonClicked();
