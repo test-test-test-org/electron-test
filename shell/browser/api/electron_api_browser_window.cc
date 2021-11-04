@@ -327,6 +327,9 @@ void BrowserWindow::OnWindowResize() {
 
 void BrowserWindow::OnWindowLeaveFullScreen() {
 #if defined(OS_MAC)
+  if (!web_contents()) {
+    LOG(INFO) << "DANGER TO MANIFOLD - WE DO NOT HAVE WEB CONTENTS!!!!!!!!!";
+  }
   if (web_contents()->IsFullscreen())
     web_contents()->ExitFullscreen(true);
 #endif
