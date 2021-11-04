@@ -12,7 +12,7 @@ can't be resolved in the PR.
 
 ## Process for removing the Experimental tag
 
-Once an API has been stable and in at least two major stable release lines it
+Once an API has been stable and in at least two major stable release lines, it
 can be nominated to have its experimental tag removed.  This discussion should
 happen at an API WG meeting.  Things to consider when discussing / nominating:
 
