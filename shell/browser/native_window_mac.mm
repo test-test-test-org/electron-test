@@ -588,11 +588,13 @@ void NativeWindowMac::Hide() {
 }
 
 bool NativeWindowMac::IsVisible() {
+  LOG(INFO) << "IN  NativeWindowMac::IsVisible()";
   bool occluded = [window_ occlusionState] == NSWindowOcclusionStateVisible;
-
+  LOG(INFO) << "IN  NativeWindowMac::IsVisible()1";
   // For a window to be visible, it must be visible to the user in the
   // foreground of the app, which means that it should not be minimized or
   // occluded
+  LOG(INFO) << "IN  NativeWindowMac::IsVisible()2";
   return [window_ isVisible] && !occluded && !IsMinimized();
 }
 
@@ -660,6 +662,7 @@ void NativeWindowMac::Restore() {
 }
 
 bool NativeWindowMac::IsMinimized() {
+  LOG(INFO) << "In NativeWindowMac::IsMinimized";
   return [window_ isMiniaturized];
 }
 
